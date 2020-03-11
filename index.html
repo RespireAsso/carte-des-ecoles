@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Respire</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137150836-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-137150836-1');
+  </script>
+
+
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="lib/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+  <link rel="stylesheet" href="lib/cluster.css"/>
+
+  <script src="lib/leaflet.1.3.4.js"></script>
+  <script src="lib/cluster.1.4.1.0.js"></script>
+  <script src="lib/jquery.3.3.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/popup.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/progress.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/modal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dimmer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/tab.js"></script>
+  <script src="building.js"></script>
+  <script src="city.js"></script>
+  <script src="world.js"></script>
+  <script src="menu.js"></script>
+  <script src="popup.js"></script>
+  <script src="map.js"></script>
+  <script src="tools.js"></script>
+  <script src="main.js"></script>
+</head>
+<body>
+  <div class="ui first modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Bienvenue
+    </div>
+    <div class="content">
+      <div class="description">
+        <div class="ui steps">
+          <div class="active step" data-tab="one">
+            <div class="content">
+              <div class="title">Présentation</div>
+            </div>
+          </div>
+          <div class="step" data-tab="two">
+            <div class="content">
+              <div class="title">Carte</div>
+            </div>
+          </div>
+          <div class="step" data-tab="three">
+            <div class="content">
+              <div class="title">Compléments</div>
+            </div>
+          </div>
+          <div class="step" data-tab="foor">
+            <div class="content">
+              <div class="title">Crédits</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="ui tab active" data-tab="one">
+          <p>
+            Bienvenue sur la carte interactive de la <b>qualité de l’air</b> aux abords
+            des établissements recevant des enfants en <b>Île-de-France</b>.
+          </p>
+          <p>
+            Cette carte vous propose des mesures sur <b>trois polluants</b> :
+            <div class="ui secondary menu">
+              <a class="info item active" data-content="Le dioxyde d'azote irrite les voies respiratoires et s'avère particulièrement nocif pour les publics fragiles (asthmatiques, malades...). Il est émis pour moitié par le trafic routier et pour un cinquième par le chauffage.">NO<sub>2</sub><i class="info circle icon" ></i></a>
+              <a class="info item active" data-content="Les microparticules de moins de 10 micromètres pénètrent l'appareil respiratoire et peuvent provoquer des inflammations, notamment chez les personnes fragiles ou malades. Elles proviennent principalement des activités industrielles (1/3), du chauffage et du trafic routier (1/4 chaque).">PM<sub>10</sub><i class="info circle icon"></i></a>
+              <a class="info item active" data-content="D’un diamètre inférieur à 2,5 micromètres, ces particules rejetées par le chauffage, l’industrie et la circulation automobile constituent un facteur aggravant pour les malades chroniques des voies respiratoires, les enfants et les personnes âgées.">PM<sub>2.5</sub><i class="info circle icon"></i></a>
+            </div>
+
+            La carte vous permet de choisir un polluant, ainsi que de naviguer ou bien de
+            rechercher un lieu précis.
+          </p>
+          <div class="ui positive right labeled button" onClick="World.instance.popup.goto('two')">
+            Suivant
+          </div>
+        </div>
+        <div class="ui tab" data-tab="two">
+          <p>
+            Vous pouvez soit vous <b>géolocaliser</b> pour regarder près de chez vous,
+            soit entrer un nom de ville, de crèche, école, collège ou lycée dans
+            la barre prévue à cet effet.
+          </p>
+          <p>
+            La carte permet aussi de se concentrer sur une année en particulier
+            ou un seuil de pollution. La classement situé sous les boutons vous
+            donne la liste des établissements les plus exposés, suivant vos choix.
+          </p>
+          <p>
+            Pour ouvrir le menu des paramétres, utilisez le bouton (en haut à gauche de la carte) :
+              <div id="nav-icon" class="in-popup">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+          </p>
+          <div class="ui positive right labeled button" onClick="World.instance.popup.goto('three')">
+            Suivant
+          </div>
+        </div>
+        <div class="ui tab" data-tab="three">
+          <p>
+            Pour une première exploration, nous vous proposons un article qui
+            détaille des constats importants.
+          </p>
+          <p>
+            Et pour compléter votre connaissance du sujet,
+            rendez-vous sur le site de <b><a target="_blank" href="https://www.respire-asso.org">Respire</a></b>.
+          </p>
+          <p>
+            <b><h3><i class="attention icon"></i>Attention</h3></b>
+          </p>
+          <p>
+            Les données présentées ne portent que sur <b>l’air extérieur</b> et ne
+            permettent donc pas d’évaluer la qualité de l’air dans les établissements.
+          </p>
+          <div class="ui positive right labeled button" onClick="World.instance.popup.goto('foor')">
+            Suivant
+          </div>
+        </div>
+        <div class="ui tab" data-tab="foor">
+          <p>
+            <b>Crédits :</b>
+          </p>
+          <p>
+            Ces données sont issues des mesures d'<a target="_blank" href="https://www.airparif.asso.fr/"><b>Airparif</b></a>, association agrée de
+            surveillance de la qualité de l’air en Île-de-France.
+          </p>
+          <p>
+            La liste des crèches est issue des registres de la
+            <a target="_blank" href="http://data.caf.fr/dataset/adresse-des-etablissements-d-accueil-du-jeune-enfant-percevant"><b>
+              Caisse nationale des allocations familiales</b></a>, celle des établissements scolaires de
+            <a target="_blank" href="https://www.data.gouv.fr/fr/datasets/adresse-et-geolocalisation-des-etablissements-denseignement-du-premier-et-second-degres-1/">
+              <b>l’Éducation nationale</b>
+            </a>.
+          </p>
+          <p>
+            La carte interactive a été réalisée par <a target="_blank" href="https://www.servebox.com"><b>ServeBox</b></a> pour Datactivist.
+          </p>
+          <p>
+            Les données ont été traitées et analysées par <a target="_blank" href="https://datactivist.coop/fr/"><b>Datactivist</b></a> pour Respire.
+          </p>
+          <p>
+            Fonds de carte : © les contributeurs <a target="_blank" href="https://www.openstreetmap.org">OpenStreetMap</a>
+          </p>
+          <div class="ui positive right labeled button" onClick="World.instance.popup.close()">
+            Fermer
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui container dimmable">
+    <div class="loading ui active dimmer">
+      <div class="ui loader"></div>
+    </div>
+    <div class="maps">
+      <div class="box-menu">
+        <div class="toggle-menu">
+          <div id="nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="fields">
+          <h7>Polluants</h7>
+          <div class="ui secondary menu sensor">
+            <a class="item active no2" onClick="World.instance.menu.setSensor('no2', this)">NO<sub>2</sub><i class="info circle icon" data-content="Le dioxyde d'azote irrite les voies respiratoires et s'avère particulièrement nocif pour les publics fragiles (asthmatiques, malades...). Il est émis pour moitié par le trafic routier et pour un cinquième par le chauffage."></i></a>
+            <a class="item pm10" onClick="World.instance.menu.setSensor('pm10', this)">PM<sub>10</sub><i class="info circle icon" data-content="Les microparticules de moins de 10 micromètres pénètrent l'appareil respiratoire et peuvent provoquer des inflammations, notamment chez les personnes fragiles ou malades. Elles proviennent principalement des activités industrielles (1/3), du chauffage et du trafic routier (1/4 chaque)."></i></a>
+            <a class="item pm25" onClick="World.instance.menu.setSensor('pm25', this)">PM<sub>2.5</sub><i class="info circle icon" data-content="D’un diamètre inférieur à 2,5 micromètres, ces particules rejetées par le chauffage, l’industrie et la circulation automobile constituent un facteur aggravant pour les malades chroniques des voies respiratoires, les enfants et les personnes âgées."></i></a>
+          </div>
+          <h7>Années</h7>
+          <div class="ui secondary menu">
+            <a class="item active" onClick="World.instance.menu.setYear('2018', this)">2018</a>
+            <a class="item" onClick="World.instance.menu.setYear('2017', this)">2017</a>
+            <a class="item" onClick="World.instance.menu.setYear('2016', this)">2016</a>
+            <a class="item" onClick="World.instance.menu.setYear('2015', this)">2015</a>
+            <a class="item" onClick="World.instance.menu.setYear('2014', this)">2014</a>
+            <a class="item" onClick="World.instance.menu.setYear('2013', this)">2013</a>
+            <a class="item" onClick="World.instance.menu.setYear('2012', this)">2012</a>
+          </div>
+          <h7>Établissements</h7>
+          <select class="ui dropdown" onChange="World.instance.menu.setType(this.value, this)">
+            <option value="all">Tous</option>
+            <option value="crèche">Crèches</option>
+            <option value="primaire">Maternelles et primaires</option>
+            <option value="secondaire">Collèges et lycées</option>
+          </select>
+          <br>
+          <br>
+          <h7>Seuils</h7>
+          <select class="ui dropdown" onChange="World.instance.menu.setThreshold(this.value, this)">
+            <option value="none">Tous</option>
+            <option class='green' value="green">Correct</option>
+            <option value="yellow">Passable</option>
+            <option value="red">Préoccupant</option>
+            <option value="black">Critique</option>
+          </select>
+          <div class="ui category search vertical segment">
+            <div class="ui icon input">
+              <input id="search" class="prompt" type="text" placeholder="École, ville, département ...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+        </div>
+        <div class="list-container">
+          <div class="list"></div>
+        </div>
+      </div>
+      <div class="top-menu">
+        <div class="ui secondary menu sensor">
+          <a class="item active no2" onClick="World.instance.menu.setSensor('no2', this)">NO<sub>2</sub><i class="info circle icon" data-content="Le dioxyde d'azote irrite les voies respiratoires et s'avère particulièrement nocif pour les publics fragiles (asthmatiques, malades...). Il est émis pour moitié par le trafic routier et pour un cinquième par le chauffage."></i></a>
+          <a class="item pm10" onClick="World.instance.menu.setSensor('pm10', this)">PM<sub>10</sub><i class="info circle icon" data-content="Les microparticules de moins de 10 micromètres pénètrent l'appareil respiratoire et peuvent provoquer des inflammations, notamment chez les personnes fragiles ou malades. Elles proviennent principalement des activités industrielles (1/3), du chauffage et du trafic routier (1/4 chaque)."></i></a>
+          <a class="item pm25" onClick="World.instance.menu.setSensor('pm25', this)">PM<sub>2.5</sub><i class="info circle icon" data-content="D’un diamètre inférieur à 2,5 micromètres, ces particules rejetées par le chauffage, l’industrie et la circulation automobile constituent un facteur aggravant pour les malades chroniques des voies respiratoires, les enfants et les personnes âgées."></i></a>
+        </div>
+      </div>
+      <div class="title-head">
+        <span>De l'air pour nos enfants</span>
+      </div>
+      <div class="agir">
+        <a target="_blank" href="https://www.respire-asso.org">AGIR AVEC NOUS</a>
+      </div>
+      <div class="legend">
+      </div>
+      <div class="question-icon" onClick="World.instance.popup.open()">
+        <i class="question circle icon"></i>
+      </div>
+      <div class="ui tiny progress">
+        <div class="bar"></div>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div class="logo">
+      <a href="https://www.respire-asso.org" itemprop="url" rel="home">
+        <img itemprop="logo" src="https://www.respire-asso.org/wp-content/uploads/2013/01/Respire-logo-200-x-160-transparent.gif" alt="Respire">
+      </a>
+    </div>
+  </div>
+</body>
+</html>
