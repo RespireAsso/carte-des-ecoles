@@ -1,7 +1,7 @@
 class Menu {
   constructor(){
     this.type = 'all';
-    this.year = '2018';
+    this.year = '2019';
     this.threshold = 'none';
     this.sensor = 'no2';
     this.menuIsToggle = false;

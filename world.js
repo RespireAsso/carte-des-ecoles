@@ -23,7 +23,7 @@ class World {
 
   computeDatabase(){
     this.database = {};
-    $.getJSON("data/data2018.json", (raw, status) => {
+    $.getJSON("data/data2019.json", (raw, status) => {
       this.transformRawData(raw);
       this.onDataReady();
     });
@@ -52,7 +52,7 @@ class World {
   }
 
   get years(){
-    return ['2012', '2013', '2014', '2015', '2016', '2017', '2018'];
+    return ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'];
   }
 
   get seuils(){
