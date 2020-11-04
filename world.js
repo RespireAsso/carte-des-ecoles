@@ -58,9 +58,9 @@ class World {
 
   get seuils(){
     return {
-      pm10: { green: { max: 15 }, yellow: { min: 15, max: 20}, red: { min: 20, max: 40 }, black: { min: 40 }},
-      pm25: { green: { max:  8 }, yellow: { min:  8, max: 10}, red: { min: 10, max: 25 }, black: { min: 25 }},
-      no2:  { green: { max: 35 }, yellow: { min: 35, max: 40}, red: { min: 40, max: 60 }, black: { min: 60 }}
+      pm10: { bon: { max: 20 }, moyen: { min: 20, max: 40}, degrade: { min: 40, max: 50 }, mauvais: { min: 50, max: 100 }, tres_mauvais: { min: 100 } },
+      pm25: { bon: { max: 10 }, moyen: { min: 10, max: 20}, degrade: { min: 20, max: 25 }, mauvais: { min: 25, max:  50 }, tres_mauvais: { min:  50 } },
+      no2:  { bon: { max: 40 }, moyen: { min: 40, max: 90}, degrade: { min: 90, max: 120 }, mauvais: { min: 120, max: 230 }, tres_mauvais: { min: 230 } },
     };
   }
 

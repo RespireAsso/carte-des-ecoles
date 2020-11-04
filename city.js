@@ -34,13 +34,15 @@ class City {
 
   get colors(){
     let colors = {
-      green:  { percent: 0, color: '#54cb71', total: 0, label: 'Correct'},
-      yellow: { percent: 0, color: '#f1c40e', total: 0, label: 'Juste en dessous des recommandations OMS'},
-      red:    { percent: 0, color: '#e74c3b', total: 0, label: 'Au delà des recommandations OMS'},
-      black:  { percent: 0, color: 'black', total: 0, label: 'Très préoccupant'}
+      bon:           { percent: 0, color: '#52efe6', total: 0, label: 'Bon'},
+      moyen:         { percent: 0, color: '#50ccaa', total: 0, label: 'Moyen'},
+      degrade:       { percent: 0, color: '#efe641', total: 0, label: 'Dégradé'},
+      mauvais:       { percent: 0, color: '#ff4f4f', total: 0, label: 'Mauvais'},
+      tres_mauvais:  { percent: 0, color: '#980033', total: 0, label: 'Très mauvais'},
     };
     this.childs.forEach((child)=>{
       let color = child.color;
+      if (!colors[color]) return; // gray
       colors[color].percent += 1 / this.childs.length;
       colors[color].total += 1;
       if(colors[color].percent > 1){

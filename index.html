@@ -216,10 +216,11 @@
           <h7>Seuils</h7>
           <select class="ui dropdown" onChange="World.instance.menu.setThreshold(this.value, this)">
             <option value="none">Tous</option>
-            <option class='green' value="green">Correct</option>
-            <option value="yellow">Juste en dessous des recommandations OMS</option>
-            <option value="red">Au delà des recommandations OMS</option>
-            <option value="black">Très préoccupant</option>
+            <option class="bon" value="bon">Bon</option>
+            <option value="moyen">Moyen</option>
+            <option value="degrade">Dégradé</option>
+            <option value="mauvais">Mauvais</option>
+            <option value="tres_mauvais">Très mauvais</option>      
           </select>
           <div class="ui category search vertical segment">
             <div class="ui icon input">

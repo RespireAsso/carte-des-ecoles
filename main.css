@@ -169,16 +169,19 @@ h7{
   font-size: 0.7em;
   display: block;
 }
-.legend .black { background-color: black; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
-.legend .red { background-color: #e74c3b; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
-.legend .yellow { background-color: #f1c40e; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
-.legend .orange { background-color: #e97e30; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
-.legend .green { background-color: #54cb71; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
-.black { color: black; }
-.red { color: #e74c3b; }
-.yellow { color: #f1c40e; }
-.orange { color: #e97e30; }
-.green { color: #54cb71; }
+
+.legend .bon { background-color: #52efe6; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
+.legend .moyen { background-color: #50ccaa; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
+.legend .degrade { background-color: #efe641; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
+.legend .mauvais { background-color: #ff4f4f; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
+.legend .tres_mauvais { background-color: #980033; width: 10px; height: 10px; border-radius: 5px; display: inline-block; }
+.bon { color: #52efe6; }
+.moyen { color: #50ccaa; }
+.degrade { color: #efe641; }
+.mauvais { color: #ff4f4f; }
+.tres_mauvais { color: #980033; }
+
+
 .list i{ font-size: 0.8em; }
 .list td.value{ width: 90px; }
 .city{ font-size: 0.8em; }

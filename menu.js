@@ -108,10 +108,11 @@ class Menu {
 
   updateLegend(){
     let labels = {
-      green:  'Correct',
-      yellow: 'Juste en dessous des recommandations OMS',
-      red: 'Au delà des recommandations OMS',
-      black:    'Très préoccupant'
+        bon: 'Bon',
+        moyen: 'Moyen',
+        degrade: 'Dégradé',
+        mauvais: 'Mauvais',
+        tres_mauvais: 'Très mauvais',
     };
     $('.legend').empty();
     let html = '';
