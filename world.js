@@ -57,9 +57,9 @@ class World {
 
   get seuils(){
     return {
-      pm10: { green: { max: 20 }, yellow: { min: 20, max: 40}, red: { min: 40, max: 60 }, black: { min: 60 }},
-      pm25: { green: { max: 10 }, yellow: { min: 10, max: 20}, red: { min: 20, max: 30 }, black: { min: 30 }},
-      no2:  { green: { max: 40 }, yellow: { min: 40, max: 50}, red: { min: 50, max: 60 }, black: { min: 60 }}
+      pm10: { green: { max: 15 }, yellow: { min: 15, max: 20}, red: { min: 20, max: 40 }, black: { min: 40 }},
+      pm25: { green: { max:  8 }, yellow: { min:  8, max: 10}, red: { min: 10, max: 25 }, black: { min: 25 }},
+      no2:  { green: { max: 35 }, yellow: { min: 35, max: 40}, red: { min: 40, max: 60 }, black: { min: 60 }}
     };
   }
 
