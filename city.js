@@ -35,9 +35,9 @@ class City {
   get colors(){
     let colors = {
       green:  { percent: 0, color: '#54cb71', total: 0, label: 'Correct'},
-      yellow: { percent: 0, color: '#f1c40e', total: 0, label: 'Passable'},
-      red:    { percent: 0, color: '#e74c3b', total: 0, label: 'Préoccupant'},
-      black:  { percent: 0, color: 'black', total: 0, label: 'Critique'}
+      yellow: { percent: 0, color: '#f1c40e', total: 0, label: 'Juste en dessous des recommandations OMS'},
+      red:    { percent: 0, color: '#e74c3b', total: 0, label: 'Au delà des recommandations OMS'},
+      black:  { percent: 0, color: 'black', total: 0, label: 'Très préoccupant'}
     };
     this.childs.forEach((child)=>{
       let color = child.color;

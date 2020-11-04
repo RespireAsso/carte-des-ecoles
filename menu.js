@@ -109,9 +109,9 @@ class Menu {
   updateLegend(){
     let labels = {
       green:  'Correct',
-      yellow: 'Passable',
-      red: 'Préoccupant',
-      black:    'Critique'
+      yellow: 'Juste en dessous des recommandations OMS',
+      red: 'Au delà des recommandations OMS',
+      black:    'Très préoccupant'
     };
     $('.legend').empty();
     let html = '';
