@@ -32,12 +32,13 @@ class World {
   transformRawData(raw) {
     for (let key in raw) {
       let json = raw[key];
-      if(!this.database[json.city]){
-        this.database[json.city] = new City(json);
+      let city_key = json.dep + ":" + json.city
+      if(!this.database[city_key]){
+        this.database[city_key] = new City(json);
       }
       let building = new Building(json);
       this.database[key] = building;
-      this.database[json.city].childs.push(building);
+      this.database[city_key].childs.push(building);
     }
     for (let key in this.database) {
       let subject = this.database[key];
